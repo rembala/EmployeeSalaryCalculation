@@ -5739,11 +5739,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\artur\\source\\repos\\EmployeeaCalculationSalary\\EmployeeCalculationSalary\\EmployeeCalculationSalaryTests.csproj",
+      "projectUniqueName": "C:\\Users\\artur\\source\\repos\\EmployeeaCalculationSalary23\\EmployeeCalculationSalary\\EmployeeCalculationSalaryTests.csproj",
       "projectName": "EmployeeCalculationSalaryTests",
-      "projectPath": "C:\\Users\\artur\\source\\repos\\EmployeeaCalculationSalary\\EmployeeCalculationSalary\\EmployeeCalculationSalaryTests.csproj",
+      "projectPath": "C:\\Users\\artur\\source\\repos\\EmployeeaCalculationSalary23\\EmployeeCalculationSalary\\EmployeeCalculationSalaryTests.csproj",
       "packagesPath": "C:\\Users\\artur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\artur\\source\\repos\\EmployeeaCalculationSalary\\EmployeeCalculationSalary\\obj\\",
+      "outputPath": "C:\\Users\\artur\\source\\repos\\EmployeeaCalculationSalary23\\EmployeeCalculationSalary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

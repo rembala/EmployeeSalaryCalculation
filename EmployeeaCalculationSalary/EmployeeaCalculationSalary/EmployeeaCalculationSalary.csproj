@@ -57,6 +57,6 @@
     </ItemGroup>
   </Target>
 
-  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties ClientApp_4_1angular-cli_1json__JSONSchema="http://jsonapi.org/schema" /></VisualStudio></ProjectExtensions>
 
 </Project>
