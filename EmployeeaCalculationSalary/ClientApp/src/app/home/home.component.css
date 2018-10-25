@@ -1,0 +1,35 @@
+
+table {
+  margin: 30px;
+  background-color: aliceblue;
+}
+
+thead th {
+  padding: 20px;
+  border-right: 1px solid saddlebrown;
+  font-family: monospace;
+}
+thead tr {
+  border: 1px solid brown;
+}
+
+tbody td {
+  text-align: center;
+  border-right: 1px solid saddlebrown;
+  padding: 20px;
+  font-family: monospace;
+  font-size: 17px;
+}
+
+tbody td button {
+  background-color: azure;
+  border-radius: 17px;
+}
+
+tbody tr {
+  border-bottom: 1px solid saddlebrown;
+}
+
+tbody {
+  border: 1px solid saddlebrown;
+}

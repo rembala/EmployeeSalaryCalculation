@@ -1,0 +1,14 @@
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.deps.json
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.runtimeconfig.json
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.runtimeconfig.dev.json
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.dll
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.pdb
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.csprojAssemblyReference.cache
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.csproj.CoreCompileInputs.cache
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.AssemblyInfoInputs.cache
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.AssemblyInfo.cs
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.dll
+C:\Users\artur\source\repos\EmployeeaCalculationSalary\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.pdb
