@@ -7,23 +7,41 @@ import { MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
+import { DialogOverviewExampleDialog } from './home/home.component';
 import { EmployeeComponentComponent } from './employee-component/employee-component.component';
+import { DialogDemoComponent } from './dialog-demo/dialog-demo.component';
+import { MatCardModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    EmployeeComponentComponent
+    EmployeeComponentComponent,
+    DialogDemoComponent,
+    MyDialogComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDialogModule,
     MatTableModule,
     FormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ])
+  ],
+  entryComponents: [
+    MyDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

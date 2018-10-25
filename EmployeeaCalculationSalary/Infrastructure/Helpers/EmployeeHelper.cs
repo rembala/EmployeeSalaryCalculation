@@ -9,7 +9,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
     {
         private readonly IEmployeesService _employeesService;
         private readonly IManagerService _managerService;
-        private readonly IYearsWorkedEmployeesService _yearsWorkedEmployees;
+        private readonly IYearsWorkedEmployeesService _yearsWorkedEmployeesService;
         private readonly ISatisfactionScoresService _satisfactionScoresService;
         private readonly IEmployeeSalaryCalculation _employeeSalaryCalculation;
 
@@ -22,7 +22,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
         {
             _employeesService = employeesService;
             _managerService = managerService;
-            _yearsWorkedEmployees = yearsWorkedEmployees;
+            _yearsWorkedEmployeesService = yearsWorkedEmployees;
             _satisfactionScoresService = satisfactionScoresService;
             _employeeSalaryCalculation = employeeSalaryCalculation;
         }
@@ -33,13 +33,15 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
 
             var employees = _employeesService.GetEmployees();
             var managers = _managerService.GetManagers();
-            var employeesWorkedYears = _yearsWorkedEmployees.GetYearsWorkedEmployees();
+            var employeesWorkedYears = _yearsWorkedEmployeesService.GetYearsWorkedEmployees();
 
             foreach (var employee in employees)
             {
                 var manager = _managerService.GetManagerByEmployeeId(employee);
 
                 var satisfactionAverage = _satisfactionScoresService.GetSatisfactionAverageOfPastThreeYears(employee);
+
+                var yearsSatisfactionScores = _yearsWorkedEmployeesService.GetYearsSatisfacions(employee);
 
                 var maxSatisfaction = _satisfactionScoresService.GetMaxSatisfactionScore(employee);
 
@@ -49,7 +51,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
                     MaxSatisfaction = maxSatisfaction,
                     SatisfactionAverage = satisfactionAverage
                 });
-
+                        
                 employeeListViewModel.Add(new EmployeeListViewModel()
                 {
                     CurrentSalary = employee.CurrentSalary,
@@ -57,7 +59,8 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
                     EmployeeName = employee.EmployeeName,
                     Position = employee.Position,
                     SatisfactionAverage = satisfactionAverage,
-                    SalaryAfterCalculation = salaryAfterComputation
+                    SalaryAfterCalculation = salaryAfterComputation,
+                    YearsSatisfactionScores = yearsSatisfactionScores
                 });
             }
 
