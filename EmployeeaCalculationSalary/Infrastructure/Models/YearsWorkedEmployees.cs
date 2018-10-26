@@ -10,7 +10,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Models
         public string YearsWorked { get; set; }
         public int SatisfactionScoreId { get; set; }
 
-        public Employees Managers { get; set; }
-        public SatisfactionScores SatisfactionScores { get; set; }
+        //public Employees Managers { get; set; }
+        //public SatisfactionScores SatisfactionScores { get; set; }
     }
 }

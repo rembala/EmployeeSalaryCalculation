@@ -12,10 +12,5 @@ namespace EmployeeaCalculationSalary.Infrastructure.Models
         public int CurrentSalary { get; set; }
         public int ManagerId { get; set; }
         public int SatisfactionScoreId { get; set; }
-
-        public Managers Managers { get; set; }
-        public SatisfactionScores SatisfactionScores { get; set; }
-
-        public ICollection<YearsWorkedEmployees> yearsWorkedEmployees { get; set; }
     }
 }

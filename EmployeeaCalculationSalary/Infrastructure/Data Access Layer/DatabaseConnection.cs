@@ -18,8 +18,8 @@ namespace EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer
             modelBuilder.Entity<Employees>().HasData(
                new Employees()
                {
-                   CurrentSalary = 1200,
                    EmployeeId = 1,
+                   CurrentSalary = 1200,
                    EmployeeName = "Artur",
                    ManagerId = 1,
                    SatisfactionScoreId = 6,
@@ -27,8 +27,8 @@ namespace EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer
                },
                 new Employees()
                 {
-                    CurrentSalary = 1200,
                     EmployeeId = 2,
+                    CurrentSalary = 1200,
                     EmployeeName = "John",
                     ManagerId = 2,
                     SatisfactionScoreId = 1,
@@ -36,7 +36,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer
                 }
                );
 
-            modelBuilder.Entity<Employees>().HasData(
+            modelBuilder.Entity<Managers>().HasData(
             new Managers()
             {
                 ManagerId = 1,
