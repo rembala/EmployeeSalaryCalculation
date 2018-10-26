@@ -21,20 +21,20 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
 
         public IEnumerable<YearsWorkedEmployees> GetYearsWorkedEmployees() => _bloggingContext.YearsWorkedEmployees;
 
-        public IEnumerable<YearsSatisfactionsViewModel> GetEmployeeYearsSatisfacions(Employees employees)
+        public IEnumerable<YearsSatisfactionsViewModel> GetEmployeeYearsSatisfacions(int employeeId)
         {
-            var employeesYearsWorked = _bloggingContext.YearsWorkedEmployees.Where(yearsWorked => yearsWorked.EmployeeId == employees.EmployeeId);
+            var employeesYearsWorked = _bloggingContext.YearsWorkedEmployees.Where(yearsWorked => yearsWorked.EmployeeId == employeeId);
 
             var employeeSatisfactions = _satisfactionScoresService.GetSatisfactionScores();
 
-            return from empYearWorked in employeesYearsWorked
-                   join satisf in employeeSatisfactions on empYearWorked.SatisfactionScoreId equals satisf.SatisfactionScoreId
-                   select new YearsSatisfactionsViewModel()
-                   {
-                       YearsWorkedId = empYearWorked.YearsWorkedId,
-                       SatisfactionScore = satisf.SatisfactionScore,
-                       YearsWorked = empYearWorked.YearsWorked
-                   };
+            return (from empYearWorked in employeesYearsWorked
+                    join satisf in employeeSatisfactions on empYearWorked.SatisfactionScoreId equals satisf.SatisfactionScoreId
+                    select new YearsSatisfactionsViewModel()
+                    {
+                        YearsWorkedId = empYearWorked.YearsWorkedId,
+                        SatisfactionScore = satisf.SatisfactionScore,
+                        YearsWorked = empYearWorked.YearsWorked
+                    }).OrderByDescending(emp => int.Parse(emp.YearsWorked));
 
         }
     }

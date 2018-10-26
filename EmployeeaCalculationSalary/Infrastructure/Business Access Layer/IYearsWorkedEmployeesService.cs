@@ -11,6 +11,6 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
     {
         IEnumerable<YearsWorkedEmployees> GetYearsWorkedEmployees();
 
-        IEnumerable<YearsSatisfactionsViewModel> GetEmployeeYearsSatisfacions(Employees employees);
+        IEnumerable<YearsSatisfactionsViewModel> GetEmployeeYearsSatisfacions(int employeeId);
     }
 }

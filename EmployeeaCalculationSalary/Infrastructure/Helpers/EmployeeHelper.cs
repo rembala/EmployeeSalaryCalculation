@@ -41,16 +41,14 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
 
                 var satisfactionAverage = _satisfactionScoresService.GetSatisfactionAverageOfPastThreeYears(employee);
 
-                var employeeYearsSatisfactionScores = _yearsWorkedEmployeesService.GetEmployeeYearsSatisfacions(employee);
-
-                var employeeMaxSatisfaction = _satisfactionScoresService.GetMaxSatisfactionScore(employee);
-
-                var employeeMaxYearSatisfaction = _employeesService.GetEmmployeeMaxYearSatisfaction(employeeYearsSatisfactionScores);
+                var employeeYearsSatisfactionScores = _yearsWorkedEmployeesService.GetEmployeeYearsSatisfacions(employee.EmployeeId);
+                
+                var employeeLastYearSatisfaction = _employeesService.GetEmmployeeLastYearSatisfaction(employeeYearsSatisfactionScores);
 
                 var salaryAfterComputation = _employeeSalaryCalculation.GetCalculatedEmployeeSalary(new EmployeeCalculationViewModel()
                 {
                     CurrentSalary = employee.CurrentSalary,
-                    MaxSatisfaction = employeeMaxSatisfaction,
+                    MaxSatisfaction = employeeLastYearSatisfaction.SatisfactionScore,
                     SatisfactionAverage = satisfactionAverage
                 });
 
@@ -63,7 +61,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
                     SatisfactionAverage = satisfactionAverage,
                     SalaryAfterCalculation = salaryAfterComputation,
                     YearsSatisfactionScores = employeeYearsSatisfactionScores,
-                    EmployeeMaxYearViewModel = employeeMaxYearSatisfaction
+                    EmployeeMaxYearViewModel = employeeLastYearSatisfaction
                 });
             }
 

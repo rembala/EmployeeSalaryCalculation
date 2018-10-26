@@ -1,5 +1,6 @@
 ﻿using EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer;
 using EmployeeaCalculationSalary.Infrastructure.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,19 +17,19 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
         }
 
         public double GetSatisfactionAverageOfPastThreeYears(Employees employee)
-            => GetSatisfactionScoresByEmployeeId(employee.EmployeeId)
+            => Math.Round(GetSatisfactionScoresByEmployeeId(employee.EmployeeId)
                                 .Select(satisfaction => satisfaction.SatisfactionScore)
-                                .Average();
+                                .Average(), 0, MidpointRounding.AwayFromZero);
 
         public IEnumerable<SatisfactionScores> GetSatisfactionScores() => _bloggingContext.SatisfactionScores;
 
         public IEnumerable<SatisfactionScores> GetSatisfactionScoresByEmployeeId(int EmployeeId)
         {
-            var satisfactionIds = _bloggingContext.YearsWorkedEmployees
+            var yearsWorkedEmployee = _bloggingContext.YearsWorkedEmployees
                 .Where(yearsEmployee => yearsEmployee.EmployeeId == EmployeeId);
 
             return GetSatisfactionScores()
-                .Where(satisfaction => satisfactionIds
+                .Where(satisfaction => yearsWorkedEmployee
                 .Any(satisfactionId => satisfactionId.SatisfactionScoreId == satisfaction.SatisfactionScoreId));
         }
 

@@ -10,16 +10,21 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
     {
         private readonly EmployeesSalaryCalculationContext _bloggingContext;
         private readonly ISatisfactionScoresService _satisfactionScoresService;
+        private readonly IYearsWorkedEmployeesService _yearsWorkedEmployeesService;
 
-        public EmployeesService(EmployeesSalaryCalculationContext bloggingContext, ISatisfactionScoresService satisfactionScoresService)
+        public EmployeesService(
+            EmployeesSalaryCalculationContext bloggingContext,
+            ISatisfactionScoresService satisfactionScoresService,
+            IYearsWorkedEmployeesService yearsWorkedEmployeesService)
         {
             _bloggingContext = bloggingContext;
             _satisfactionScoresService = satisfactionScoresService;
+            _yearsWorkedEmployeesService = yearsWorkedEmployeesService;
         }
 
         public IEnumerable<Employees> GetEmployees() => _bloggingContext.Employees;
 
-        public EmployeeMaxYearViewModel GetEmmployeeMaxYearSatisfaction(IEnumerable<YearsSatisfactionsViewModel> yearsSatisfactions)
+        public EmployeeMaxYearViewModel GetEmmployeeLastYearSatisfaction(IEnumerable<YearsSatisfactionsViewModel> yearsSatisfactions)
         {
             return yearsSatisfactions.OrderByDescending(employee => int.Parse(employee.YearsWorked))
                 .Select(employeeMax =>
@@ -32,14 +37,15 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
                     ).FirstOrDefault();
         }
 
-        public void UpdateEmployeeSatisfactionScore(int employeeId, int satisfactionScore)
+        public void UpdateEmployeeSatisfactionScore(int yearsWorkedId, int satisfactionScore)
         {
-            var employeeSatisfactionScores = _satisfactionScoresService.GetSatisfactionScores()
+            var satisfactionScoreEmployee = _satisfactionScoresService.GetSatisfactionScores()
                 .FirstOrDefault(satisfaction => satisfaction.SatisfactionScore == satisfactionScore);
 
-            var employee = _bloggingContext.Employees.FirstOrDefault(empl => empl.EmployeeId == employeeId);
+            var employeeYearsWorked = _bloggingContext.YearsWorkedEmployees.FirstOrDefault(employee => employee.YearsWorkedId == yearsWorkedId);
 
-            employee.SatisfactionScoreId = employeeSatisfactionScores.SatisfactionScoreId;
+            employeeYearsWorked.SatisfactionScoreId = satisfactionScoreEmployee.SatisfactionScoreId;
+
             _bloggingContext.SaveChanges();
 
         }

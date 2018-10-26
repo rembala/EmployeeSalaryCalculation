@@ -11,8 +11,8 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
     {
         IEnumerable<Employees> GetEmployees();
 
-        EmployeeMaxYearViewModel GetEmmployeeMaxYearSatisfaction(IEnumerable<YearsSatisfactionsViewModel> yearsSatisfactions);
+        EmployeeMaxYearViewModel GetEmmployeeLastYearSatisfaction(IEnumerable<YearsSatisfactionsViewModel> yearsSatisfactions);
 
-        void UpdateEmployeeSatisfactionScore(int employeeId, int satisfactionScore);
+        void UpdateEmployeeSatisfactionScore(int yearsWorkedId, int satisfactionScore);
     }
 }
