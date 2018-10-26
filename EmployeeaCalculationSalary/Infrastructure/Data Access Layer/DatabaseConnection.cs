@@ -7,7 +7,9 @@ namespace EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer
     {
         public EmployeesSalaryCalculationContext(DbContextOptions<EmployeesSalaryCalculationContext> options)
             : base(options)
-        { }
+        {
+            Database.EnsureCreated();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
