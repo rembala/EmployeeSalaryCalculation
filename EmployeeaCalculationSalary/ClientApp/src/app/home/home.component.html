@@ -1,5 +1,5 @@
 
-<table class="main_table">
+<table class="main_table" *ngIf="EmployeeList?.length > 0">
   <thead>
     <tr>
       <th>
@@ -67,3 +67,4 @@
     </tr>
   </tbody>
 </table>
+<ngx-spinner></ngx-spinner>

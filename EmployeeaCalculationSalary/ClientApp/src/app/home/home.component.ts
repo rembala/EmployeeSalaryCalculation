@@ -2,7 +2,8 @@ import { Component, Input, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
-import { Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,17 @@ import { Location} from '@angular/common';
 export class HomeComponent {
   @Input() EmployeeList: EmployeeList[];
 
-  constructor(http: HttpClient, public dialog: MatDialog, @Inject('BASE_URL') baseUrl: string) {
+  constructor(
+    http: HttpClient,
+    public dialog: MatDialog,
+    private spinner: NgxSpinnerService,
+    @Inject('BASE_URL') baseUrl: string) {
+    this.spinner.show();
+
     http.get<EmployeeList[]>(baseUrl + 'api/Employee/GetEmployeeList').subscribe(result => {
+      this.spinner.hide();
       this.EmployeeList = result;
-    }, error => console.error(error));
+    }, error => { console.error(error); this.spinner.hide(); });
   }
 
   animal: string;
@@ -52,6 +60,7 @@ export class DialogOverviewExampleDialog {
     public location: Location,
     public http: HttpClient,
     public router: Router,
+    private spinner: NgxSpinnerService,
     @Inject('BASE_URL') public baseUrl: string,
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public employeeMaxYearSatisfaction: EmployeeMaxYearSatisfaction) { }
@@ -61,12 +70,14 @@ export class DialogOverviewExampleDialog {
   }
 
   onCloseConfirm(yearsWorkedId, satisfactionScore) {
+    this.spinner.show();
     this.http.post(this.baseUrl + 'api/Employee/ChangeSatisfactionScore', { SatisfactionScore: satisfactionScore, YearsWorkedId: yearsWorkedId }).subscribe(result => {
       location.reload();
-    }, error => console.error(error));
+      this.spinner.hide();
+    }, error => { console.error(error); this.spinner.hide(); });
     this.dialogRef.close('Confirm');
   }
-  
+
   onCloseCancel() {
     this.dialogRef.close('Cancel');
   }

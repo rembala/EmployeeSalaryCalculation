@@ -32,7 +32,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer
                     EmployeeName = "John",
                     ManagerId = 2,
                     SatisfactionScoreId = 1,
-                    Position = "sales representatives"
+                    Position = "Sales representatives"
                 }
                );
 

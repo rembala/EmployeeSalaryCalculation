@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
+    NgxSpinnerModule,
     MatTableModule,
     FormsModule,
     BrowserAnimationsModule,
