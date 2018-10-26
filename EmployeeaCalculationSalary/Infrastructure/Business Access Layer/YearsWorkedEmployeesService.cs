@@ -21,7 +21,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
 
         public IEnumerable<YearsWorkedEmployees> GetYearsWorkedEmployees() => _bloggingContext.YearsWorkedEmployees;
 
-        public IEnumerable<YearsSatisfactionsViewModel> GetYearsSatisfacions(Employees employees)
+        public IEnumerable<YearsSatisfactionsViewModel> GetEmployeeYearsSatisfacions(Employees employees)
         {
             var employeesYearsWorked = _bloggingContext.YearsWorkedEmployees.Where(yearsWorked => yearsWorked.EmployeeId == employees.EmployeeId);
 
@@ -31,7 +31,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
                    join satisf in employeeSatisfactions on empYearWorked.SatisfactionScoreId equals satisf.SatisfactionScoreId
                    select new YearsSatisfactionsViewModel()
                    {
-                       EmployeeId = empYearWorked.EmployeeId,
+                       YearsWorkedId = empYearWorked.YearsWorkedId,
                        SatisfactionScore = satisf.SatisfactionScore,
                        YearsWorked = empYearWorked.YearsWorked
                    };

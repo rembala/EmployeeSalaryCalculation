@@ -8,7 +8,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
     {
         IEnumerable<SatisfactionScores> GetSatisfactionScores();
 
-        IEnumerable<SatisfactionScores> GetSatisfactionScoresByEmployee(Employees employees);
+        IEnumerable<SatisfactionScores> GetSatisfactionScoresByEmployeeId(int employeeId);
 
         double GetSatisfactionAverageOfPastThreeYears(Employees employee);
 

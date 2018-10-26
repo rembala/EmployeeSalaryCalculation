@@ -3,6 +3,7 @@ using EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer;
 using EmployeeaCalculationSalary.Infrastructure.Helpers;
 using EmployeeaCalculationSalary.Infrastructure.View_Models;
 using Microsoft.AspNetCore.Mvc;
+using EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer;
 
 namespace EmployeeaCalculationSalary.Controllers
 {
@@ -11,13 +12,16 @@ namespace EmployeeaCalculationSalary.Controllers
     {
         private readonly EmployeesSalaryCalculationContext _bloggingContext;
         private readonly IEmployeeHelper _employeeHelper;
+        private readonly IEmployeesService _employeesService;
 
         public EmployeeController(
             EmployeesSalaryCalculationContext bloggingContext,
-            IEmployeeHelper employeeHelper)
+            IEmployeeHelper employeeHelper,
+            IEmployeesService employeesService)
         {
             _bloggingContext = bloggingContext;
             _employeeHelper = employeeHelper;
+            _employeesService = employeesService;
         }
 
         [HttpGet("[action]")]
@@ -26,5 +30,12 @@ namespace EmployeeaCalculationSalary.Controllers
             return _employeeHelper.CreateEmployeeListViewModel();
         }
 
+        [HttpPost("[action]")]
+        public IEnumerable<EmployeeListViewModel> ChangeSatisfactionScore([FromBody]YearsSatisfactionsViewModel yearsSatisfactionsViewModel)
+        {
+            _employeesService.UpdateEmployeeSatisfactionScore(yearsSatisfactionsViewModel.YearsWorkedId, yearsSatisfactionsViewModel.SatisfactionScore);
+
+            return _employeeHelper.CreateEmployeeListViewModel();
+        }
     }
 }

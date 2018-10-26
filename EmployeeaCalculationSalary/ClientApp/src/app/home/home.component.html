@@ -1,3 +1,4 @@
+
 <table class="main_table">
   <thead>
     <tr>
@@ -23,7 +24,7 @@
         Employee years worked satisfactions
       </th>
       <th>
-        Change current bonus calculation
+        Change last year satisfaction score
       </th>
     </tr>
   </thead>
@@ -62,7 +63,7 @@
           </tr>
         </table>
       </td>
-      <td><button mat-raised-button (click)="openDialog(27)">Pick one</button></td>
+      <td><button mat-raised-button (click)="openDialog(employee.employeeMaxYearViewModel)">Change</button></td>
     </tr>
   </tbody>
 </table>

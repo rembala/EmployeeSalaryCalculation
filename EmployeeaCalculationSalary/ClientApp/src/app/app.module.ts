@@ -41,7 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ])
   ],
   entryComponents: [
-    MyDialogComponent
+    DialogOverviewExampleDialog
   ],
   providers: [],
   bootstrap: [AppComponent]

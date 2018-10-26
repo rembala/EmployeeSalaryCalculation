@@ -19,10 +19,10 @@ export class HomeComponent {
   animal: string;
   name: string;
 
-  openDialog(YearsSatisfactions): void {
+  openDialog(latYearSatisfaction): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: YearsSatisfactions
+      width: '650px',
+      data: latYearSatisfaction
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -30,19 +30,6 @@ export class HomeComponent {
       this.animal = result;
     });
   }
-
-  ////openDialog(param): void {
-  ////  const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-  ////    width: '250px',
-  ////    data: { name: this.name, animal: this.animal }
-  ////  });
-
-  ////  dialogRef.afterClosed().subscribe(result => {
-  ////    console.log('The dialog was closed');
-  ////    this.animal = result;
-  ////  });
-  ////}
-
 }
 
 export interface DialogData {
@@ -58,11 +45,24 @@ export interface DialogData {
 export class DialogOverviewExampleDialog {
 
   constructor(
+    public http: HttpClient,
+    @Inject('BASE_URL') public baseUrl: string,
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: YearsSatisfactions) { }
+    @Inject(MAT_DIALOG_DATA) public employeeMaxYearSatisfaction: EmployeeMaxYearSatisfaction) { }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onCloseConfirm(yearsWorkedId, satisfactionScore) {
+    this.http.post(this.baseUrl + 'api/Employee/ChangeSatisfactionScore', { SatisfactionScore: satisfactionScore, YearsWorkedId: yearsWorkedId }).subscribe(result => {
+      var s = result;
+    }, error => console.error(error));
+    this.dialogRef.close('Confirm');
+  }
+
+  onCloseCancel() {
+    this.dialogRef.close('Cancel');
   }
 }
 
@@ -74,10 +74,16 @@ interface EmployeeList {
   currentsalary: number;
   salaryAftercalculation: number;
   yearsSatisfactions: YearsSatisfactions;
+  employeeMaxYearViewModel: EmployeeMaxYearSatisfaction
 }
 
 interface YearsSatisfactions {
-  employeeid: number;
   SatisfactionScore: number;
   YearsWorked: string
+}
+
+interface EmployeeMaxYearSatisfaction {
+  YearsWorkedId: number;
+  MaxYear: string;
+  SatisfactionScore: number;
 }

@@ -5,8 +5,6 @@ namespace EmployeeaCalculationSalary.Infrastructure.View_Models
 {
     public class EmployeeListViewModel
     {
-        public int EmployeeId { get; set; }
-
         public string EmployeeName { get; set; }
 
         public string EmployeeManager { get; set; }
@@ -18,6 +16,8 @@ namespace EmployeeaCalculationSalary.Infrastructure.View_Models
         public int CurrentSalary { get; set; }
 
         public double SalaryAfterCalculation { get; set; }
+
+        public EmployeeMaxYearViewModel EmployeeMaxYearViewModel { get; set; }
 
         public IEnumerable<YearsSatisfactionsViewModel> YearsSatisfactionScores { get; set; }
     }

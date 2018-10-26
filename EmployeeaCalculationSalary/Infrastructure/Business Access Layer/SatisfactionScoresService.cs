@@ -16,16 +16,16 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
         }
 
         public double GetSatisfactionAverageOfPastThreeYears(Employees employee)
-            => GetSatisfactionScoresByEmployee(employee)
+            => GetSatisfactionScoresByEmployeeId(employee.EmployeeId)
                                 .Select(satisfaction => satisfaction.SatisfactionScore)
                                 .Average();
 
         public IEnumerable<SatisfactionScores> GetSatisfactionScores() => _bloggingContext.SatisfactionScores;
 
-        public IEnumerable<SatisfactionScores> GetSatisfactionScoresByEmployee(Employees employees)
+        public IEnumerable<SatisfactionScores> GetSatisfactionScoresByEmployeeId(int EmployeeId)
         {
             var satisfactionIds = _bloggingContext.YearsWorkedEmployees
-                .Where(yearsEmployee => yearsEmployee.EmployeeId == employees.EmployeeId);
+                .Where(yearsEmployee => yearsEmployee.EmployeeId == EmployeeId);
 
             return GetSatisfactionScores()
                 .Where(satisfaction => satisfactionIds
@@ -33,7 +33,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Business_Access_Layer
         }
 
         public int GetMaxSatisfactionScore(Employees employees)
-         => GetSatisfactionScoresByEmployee(employees).Select(satisfaction => satisfaction.SatisfactionScore).Max();
+         => GetSatisfactionScoresByEmployeeId(employees.EmployeeId).Select(satisfaction => satisfaction.SatisfactionScore).Max();
 
         public Dictionary<int, string> GetSatisfactionsBonuses()
             => GetSatisfactionScores().ToDictionary(key => key.SatisfactionScore, value => value.Bonus);

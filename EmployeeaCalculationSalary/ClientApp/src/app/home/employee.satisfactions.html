@@ -1,10 +1,39 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div>
+  <h2 mat-dialog-title>Change last year satisfaction score</h2>
+  <hr>
+  <mat-dialog-content>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Year
+            </th>
+            <th>
+              Current satisfaction score
+            </th>
+            <th>
+              New satisfaction score
+            </th>
+            <th>
+              Change
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{employeeMaxYearSatisfaction.maxYear}}</td>
+            <td>{{employeeMaxYearSatisfaction.satisfactionScore}}</td>
+            <td><input #satisfactionScore /></td>
+            <td><button mat-raised-button (click)="onCloseConfirm(employeeMaxYearSatisfaction.yearsWorkedId, satisfactionScore.value)">Change</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="onCloseConfirm()">CONFIRM</button>&nbsp;
+    <button mat-raised-button (click)="onCloseCancel()">CANCEL</button>
+  </mat-dialog-actions>
+</div>
