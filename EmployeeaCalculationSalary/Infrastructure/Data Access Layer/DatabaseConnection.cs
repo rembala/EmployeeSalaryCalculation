@@ -9,6 +9,12 @@ namespace EmployeeaCalculationSalary.Infrastructure.Data_Access_Layer
             : base(options)
         { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+        }
+
         public DbSet<Employees> Employees { get; set; }
         public DbSet<Managers> Managers { get; set; }
         public DbSet<SatisfactionScores> SatisfactionScores { get; set; }

@@ -1,6 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  public EmployeeList: EmployeeList[];
+  @Input() EmployeeList: EmployeeList[];
 
   constructor(http: HttpClient, public dialog: MatDialog, @Inject('BASE_URL') baseUrl: string) {
     http.get<EmployeeList[]>(baseUrl + 'api/Employee/GetEmployeeList').subscribe(result => {
@@ -44,8 +46,12 @@ export interface DialogData {
 })
 export class DialogOverviewExampleDialog {
 
+  CompleteData: string;
+
   constructor(
+    public location: Location,
     public http: HttpClient,
+    public router: Router,
     @Inject('BASE_URL') public baseUrl: string,
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public employeeMaxYearSatisfaction: EmployeeMaxYearSatisfaction) { }
@@ -56,11 +62,11 @@ export class DialogOverviewExampleDialog {
 
   onCloseConfirm(yearsWorkedId, satisfactionScore) {
     this.http.post(this.baseUrl + 'api/Employee/ChangeSatisfactionScore', { SatisfactionScore: satisfactionScore, YearsWorkedId: yearsWorkedId }).subscribe(result => {
-      var s = result;
+      location.reload();
     }, error => console.error(error));
     this.dialogRef.close('Confirm');
   }
-
+  
   onCloseCancel() {
     this.dialogRef.close('Cancel');
   }

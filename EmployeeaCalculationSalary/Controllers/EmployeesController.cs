@@ -31,11 +31,9 @@ namespace EmployeeaCalculationSalary.Controllers
         }
 
         [HttpPost("[action]")]
-        public IEnumerable<EmployeeListViewModel> ChangeSatisfactionScore([FromBody]YearsSatisfactionsViewModel yearsSatisfactionsViewModel)
+        public void ChangeSatisfactionScore([FromBody]YearsSatisfactionsViewModel yearsSatisfactionsViewModel)
         {
             _employeesService.UpdateEmployeeSatisfactionScore(yearsSatisfactionsViewModel.YearsWorkedId, yearsSatisfactionsViewModel.SatisfactionScore);
-
-            return _employeeHelper.CreateEmployeeListViewModel();
         }
     }
 }
