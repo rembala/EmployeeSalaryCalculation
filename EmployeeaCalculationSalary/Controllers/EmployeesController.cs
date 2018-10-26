@@ -21,7 +21,7 @@ namespace EmployeeaCalculationSalary.Controllers
         {
             _bloggingContext = bloggingContext;
             _employeeHelper = employeeHelper;
-            _employeesService = employeesService;
+            _employeesService = employeesService; 
         }
 
         [HttpGet("[action]")]
