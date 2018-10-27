@@ -48,7 +48,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
                 var salaryAfterComputation = _employeeSalaryCalculation.GetCalculatedEmployeeSalary(new EmployeeCalculationViewModel()
                 {
                     CurrentSalary = employee.CurrentSalary,
-                    MaxSatisfaction = employeeLastYearSatisfaction.SatisfactionScore,
+                    LastYearSatisfactionScore = employeeLastYearSatisfaction.SatisfactionScore,
                     SatisfactionAverage = satisfactionAverage
                 });
 

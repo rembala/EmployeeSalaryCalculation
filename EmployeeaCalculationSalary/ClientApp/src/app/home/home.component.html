@@ -1,4 +1,3 @@
-
 <table class="main_table" *ngIf="EmployeeList?.length > 0">
   <thead>
     <tr>
@@ -29,7 +28,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngIf="EmployeeList?.length == 0"><td colspan="7" style="text-align:center">Loading data...</td></tr>
     <tr *ngFor="let employee of EmployeeList">
       <td>
         {{employee.employeeName}}
@@ -57,7 +55,7 @@
               <th>Satisfaction score</th>
             </tr>
           </thead>
-          <tr *ngFor="let yearsSatisfactions of employee.yearsSatisfactionScores; let i = index">
+          <tr *ngFor="let yearsSatisfactions of employee.yearsSatisfactionScores;">
             <td>{{yearsSatisfactions.yearsWorked}}</td>
             <td>{{yearsSatisfactions.satisfactionScore}}</td>
           </tr>

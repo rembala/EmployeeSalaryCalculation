@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ValidationComponentComponent } from '../validation-component/validation-component.component';
 
 @Component({
   selector: 'app-home',
@@ -26,25 +27,17 @@ export class HomeComponent {
     }, error => { console.error(error); this.spinner.hide(); });
   }
 
-  animal: string;
-  name: string;
-
   openDialog(latYearSatisfaction): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+
+    const dialogRef = this.dialog.open(EmployeeDialogComponent, {
       width: '650px',
       data: latYearSatisfaction
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
-}
-
-export interface DialogData {
-  animal: string;
-  name: string;
 }
 
 @Component({
@@ -52,17 +45,18 @@ export interface DialogData {
   templateUrl: './employee.satisfactions.html',
   styleUrls: ['./home.component.css']
 })
-export class DialogOverviewExampleDialog {
+export class EmployeeDialogComponent {
 
-  CompleteData: string;
+  MessageError: string;
 
   constructor(
     public location: Location,
     public http: HttpClient,
     public router: Router,
-    private spinner: NgxSpinnerService,
+    public dialog: MatDialog,
     @Inject('BASE_URL') public baseUrl: string,
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<EmployeeDialogComponent>,
+    public validationDialog: MatDialogRef<ValidationComponentComponent>,
     @Inject(MAT_DIALOG_DATA) public employeeMaxYearSatisfaction: EmployeeMaxYearSatisfaction) { }
 
   onNoClick(): void {
@@ -70,12 +64,16 @@ export class DialogOverviewExampleDialog {
   }
 
   onCloseConfirm(yearsWorkedId, satisfactionScore) {
-    this.spinner.show();
-    this.http.post(this.baseUrl + 'api/Employee/ChangeSatisfactionScore', { SatisfactionScore: satisfactionScore, YearsWorkedId: yearsWorkedId }).subscribe(result => {
-      location.reload();
-      this.spinner.hide();
-    }, error => { console.error(error); this.spinner.hide(); });
-    this.dialogRef.close('Confirm');
+    this.MessageError = null;
+    if (satisfactionScore != '' && satisfactionScore >= 0 && satisfactionScore <= 5) {
+      this.http.post(this.baseUrl + 'api/Employee/ChangeSatisfactionScore', { SatisfactionScore: satisfactionScore, YearsWorkedId: yearsWorkedId }).subscribe(result => {
+        location.reload();
+      }, error => { console.error(error); });
+      this.dialogRef.close('Confirm');
+    }
+    else {
+      this.MessageError = "The value must be numeric and must be from 0 to 5";
+    }
   }
 
   onCloseCancel() {

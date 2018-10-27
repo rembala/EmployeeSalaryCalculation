@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { DialogOverviewExampleDialog } from './home/home.component';
+import { EmployeeDialogComponent } from './home/home.component';
 import { EmployeeComponentComponent } from './employee-component/employee-component.component';
 import { DialogDemoComponent } from './dialog-demo/dialog-demo.component';
 import { MatCardModule } from '@angular/material';
@@ -25,7 +25,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     EmployeeComponentComponent,
     DialogDemoComponent,
     MyDialogComponent,
-    DialogOverviewExampleDialog
+    EmployeeDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,7 +42,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ])
   ],
   entryComponents: [
-    DialogOverviewExampleDialog
+    EmployeeDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

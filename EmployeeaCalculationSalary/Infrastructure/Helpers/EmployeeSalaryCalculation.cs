@@ -23,7 +23,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.Helpers
             var satisfactions = _satisfactionScoresService.GetSatisfactionsBonuses();
 
             var computedSatisfaction = Math.Round(
-                Decimal.Parse($"{employeeCalculationViewModel.SatisfactionAverage}.{employeeCalculationViewModel.MaxSatisfaction}"),
+                Decimal.Parse($"{employeeCalculationViewModel.SatisfactionAverage}.{employeeCalculationViewModel.LastYearSatisfactionScore}"),
                 0,
                 MidpointRounding.AwayFromZero);
 

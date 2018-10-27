@@ -5,7 +5,7 @@ namespace EmployeeaCalculationSalary.Infrastructure.View_Models
     {
         public double SatisfactionAverage { get; set; }
 
-        public int MaxSatisfaction { get; set; }
+        public int LastYearSatisfactionScore { get; set; }
 
         public int CurrentSalary { get; set; }
     }
