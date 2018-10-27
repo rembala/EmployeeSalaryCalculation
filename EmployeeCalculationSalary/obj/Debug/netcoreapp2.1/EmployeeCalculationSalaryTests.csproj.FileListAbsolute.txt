@@ -26,3 +26,8 @@ C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSala
 C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.AssemblyInfo.cs
 C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.dll
 C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.pdb
+C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeaCalculationSalary.Views.dll
+C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeaCalculationSalary.Views.pdb
+C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeaCalculationSalary.dll
+C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\bin\Debug\netcoreapp2.1\EmployeeaCalculationSalary.pdb
+C:\Users\artur\source\repos\EmployeeaCalculationSalary23\EmployeeCalculationSalary\obj\Debug\netcoreapp2.1\EmployeeCalculationSalaryTests.csproj.CopyComplete

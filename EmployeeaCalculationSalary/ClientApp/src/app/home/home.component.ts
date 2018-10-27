@@ -4,7 +4,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ValidationComponentComponent } from '../validation-component/validation-component.component';
 
 @Component({
   selector: 'app-home',
@@ -56,7 +55,6 @@ export class EmployeeDialogComponent {
     public dialog: MatDialog,
     @Inject('BASE_URL') public baseUrl: string,
     public dialogRef: MatDialogRef<EmployeeDialogComponent>,
-    public validationDialog: MatDialogRef<ValidationComponentComponent>,
     @Inject(MAT_DIALOG_DATA) public employeeMaxYearSatisfaction: EmployeeMaxYearSatisfaction) { }
 
   onNoClick(): void {
